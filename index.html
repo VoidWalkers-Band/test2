@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Voidwalkers</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Welcome to The Void Walkers! 🌌
+
+            Step into a world where raw energy meets lyrical depth! We’re a dynamic rap-rock band blending hard-hitting beats, electrifying guitar riffs, and thought-provoking lyrics that explore the human experience. Our sound is a fusion of intense rap verses and powerful rock anthems, creating a sonic landscape that resonates with the bold and the adventurous.
+            
+            Join us on our journey as we push musical boundaries and challenge the status quo. Expect high-octane performances, behind-the-scenes content, and collaborations with talented artists. Whether you’re seeking motivation, catharsis, or just a killer soundtrack for your day, The Void Walkers have something for everyone.
+            
+            Subscribe and walk with us into the void, where every beat takes you further into the rhythm of life! 🚀🎤🎸 Don't forget to subscribe!</p>
+    </section>
+
+    <section id="videos">
+        <h2>Latest Videos</h2>
+        <ul>
+            <li><a href="https://youtu.be/d51yZuqaXTY?si=G3nFdlGR0FjupAZm" target="_blank">Video Title 1</a></li>
+        </ul>
+    </section>
+
+    <section id="reviews">
+        <h2>Reviews</h2>
+        <p>We would love to hear your thoughts! Please rate our channel and leave a comment below.</p>
+        <form id="reviewForm">
+            <label for="rating">Rating:</label>
+            <select id="rating" name="rating" required>
+                <option value="" disabled selected>Select a rating</option>
+                <option value="5">⭐️⭐️⭐️⭐️⭐️ (5 stars)</option>
+                <option value="4">⭐️⭐️⭐️⭐️☆ (4 stars)</option>
+                <option value="3">⭐️⭐️⭐️☆☆ (3 stars)</option>
+                <option value="2">⭐️⭐️☆☆☆ (2 stars)</option>
+                <option value="1">⭐️☆☆☆☆ (1 star)</option>
+            </select>
+            <br><br>
+            <label for="comment">Comment:</label><br>
+            <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Leave your comment here..." required></textarea>
+            <br><br>
+            <button type="submit">Submit Review</button>
+        </form>
+        <div id="reviewList">
+            <h3>User Reviews:</h3>
+            <ul id="reviewsContainer"></ul>
+        </div>
+    </section>
+
+    <section id="register">
+        <h2>Register</h2>
+        <form id="registrationForm">
+            <label for="regEmail">Email:</label>
+            <input type="email" id="regEmail" name="email" required>
+            <br><br>
+            <label for="regPassword">Password:</label>
+            <input type="password" id="regPassword" name="password" required>
+            <br><br>
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+    <section id="login">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="email" required>
+            <br><br>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password" required>
+            <br><br>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>You can reach me at <a href="voidwalkers.songs@gmail.com">your-email@example.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy;VoidWalkers</p>
+    </footer>
+
+    <script>
+        // Review Form Handling
+        const reviewForm = document.getElementById('reviewForm');
+        const reviewsContainer = document.getElementById('reviewsContainer');
+
+        reviewForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const rating = document.getElementById('rating').value;
+            const comment = document.getElementById('comment').value;
+
+            // Improved validation
+            if (!rating) {
+                alert('Please select a rating.');
+                return;
+            }
+            if (comment.length < 5) {
+                alert('Comment must be at least 5 characters long.');
+                return;
+            }
+
+            // Display the review dynamically
+            const li = document.createElement('li');
+            li.textContent = `Rating: ${rating} Stars - Comment: ${comment}`;
+            reviewsContainer.appendChild(li);
+            reviewForm.reset();
+        });
+
+        // Registration Form Handling
+        const registrationForm = document.getElementById('registrationForm');
+        registrationForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+
+            // Basic validation
+            if (!email || !password) {
+                alert('Please fill in both fields.');
+                return;
+            }
+
+            // TODO: Send registration data to the server for storage
+
+            alert(`Registration successful for ${email}!`);
+            registrationForm.reset();
+        });
+
+        // Login Form Handling
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Basic validation
+            if (!email || !password) {
+                alert('Please fill in both fields.');
+                return;
+            }
+
+            // TODO: Send login data to the server for authentication
+
+            alert(`Login successful for ${email}!`);
+            loginForm.reset();
+        });
+    </script>
+</body>
+</html>
